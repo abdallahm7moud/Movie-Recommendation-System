@@ -1,0 +1,103 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.nav-tabs .nav-link {
+    color: #007bff;
+}
+
+.card {
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 400px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    height: 2.4rem;
+    overflow: hidden;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.description {
+    height: 4.5rem;
+    overflow: hidden;
+    font-size: 0.85rem;
+}
+
+.rating {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.dropdown {
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.text-muted {
+    font-size: 0.8rem;
+}
+
+/* Loading spinner styles */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Watch button styling */
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+}
+
+/* History section styling */
+.text-center {
+    text-align: center;
+}
+
+/* Toast notification styling */
+.toast {
+    border-left: 4px solid #28a745;
+}
