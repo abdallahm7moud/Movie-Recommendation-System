@@ -129,12 +129,3 @@ This project uses the [TMDB API](https://developer.themoviedb.org/docs) to fetch
    Navigate to [http://localhost:8050](http://localhost:8050) in your web browser.
 
 ---
-
-## Future Work
-
-_TODO_
-
----
-### MovieLens_Recommender
-This is Recommender Systems Course project for the 9 month program
-
