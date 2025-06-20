@@ -43,7 +43,7 @@ class UserHistory:
     def load_additional_history(self):
         """Load additional history from app interactions"""
         try:
-            self.additional_history = pd.read_csv('user_history.csv')
+            self.additional_history = pd.read_csv('data/user_history.csv')
             if 'source' not in self.additional_history.columns:
                 self.additional_history['source'] = 'app'
             print(f"Loaded {len(self.additional_history)} additional watch records")

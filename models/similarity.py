@@ -20,6 +20,13 @@ class ItemSimilarity:
     def get_similar_movies(self, movie_id, n=10, offset=0):
         movie_idx = self.movies_df[self.movies_df['movieId'] == movie_id].index[0]
         similar_scores = list(enumerate(self.similarity_matrix[movie_idx]))
+        
+        similar_scores = [
+        (idx, score)
+        for idx, score in similar_scores
+        if idx != movie_idx
+        ]
+        
         similar_scores = sorted(similar_scores, key=lambda x: x[1], reverse=True)
         
         similar_movies = similar_scores[offset:offset + n]

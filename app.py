@@ -1,6 +1,8 @@
 import dash
 from dash import html, dcc, Input, Output, State, ALL, callback_context
 import dash_bootstrap_components as dbc
+from dash_bootstrap_templates import ThemeSwitchAIO, load_figure_template
+
 import pandas as pd
 from models.recommender import MovieRecommender
 from models.similarity import ItemSimilarity
@@ -8,8 +10,16 @@ from models.tmdb_api import TMDBApi
 from models.user_history import UserHistory
 from utils.helpers import create_movie_card, create_loading_spinner, create_history_card
 
+# Get light and Dark themes
+light_css = "./assets/light_styles.css"
+dark_css = "./assets/styles.css"
+
 # Initialize the app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,dark_css])
+
+# Load both figure templates (light + dark)
+load_figure_template([light_css, dark_css])
+
 
 # Initialize TMDB API
 tmdb_api = TMDBApi()
@@ -23,14 +33,24 @@ user_history = UserHistory()
 recommender.load_data()
 similarity_model.load_data()
 
+# Add the toggle switch in your layout for switching between light and dark:
+theme_switch = ThemeSwitchAIO(
+    aio_id="theme",
+    themes=[light_css, dark_css],
+    switch_props={"persistence": True},
+    icons={"left":"fa fa-moon", "right":"fa fa-sun"}
+)
+
 # Layout
 app.layout = html.Div([
+
     dbc.NavbarSimple(
         brand="Movie Recommender System",
         brand_href="#",
         color="dark",
         dark=True,
     ),
+    theme_switch,
     
     dbc.Container([
         dbc.Tabs([
@@ -125,6 +145,22 @@ app.layout = html.Div([
     
     create_loading_spinner()
 ])
+
+# Client-side callback for Bootstrap color mode switching
+app.clientside_callback(
+    """
+    function(is_light) {
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        is_light ? 'light' : 'dark'
+      );
+      return window.dash_clientside.no_update;
+    }
+    """,
+    Output(ThemeSwitchAIO.ids.store("theme"), "data"),
+    Input(ThemeSwitchAIO.ids.switch("theme"), "value")
+)
+
 
 # Store current user when recommendations are loaded
 @app.callback(
