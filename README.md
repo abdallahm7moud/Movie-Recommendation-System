@@ -86,7 +86,6 @@ This project uses the [TMDB API](https://developer.themoviedb.org/docs) to fetch
 │   └── helpers.py         # UI card generation, loading spinners, etc.
 ├── data/                  # MovieLens dataset (processed)
 ├── config/                # Configs and keys (if any)
-├── demo.mp4               # Demo video file
 ├── README.md
 └── requirements.txt
 ```
